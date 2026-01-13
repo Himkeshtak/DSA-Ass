@@ -7,6 +7,6 @@ int main()
     cout<<"enter the two integers to have sum operation";
     cin>>a;
     cin>>b;
-    cout<<a+b;
+    cout<<"Sum = "<<a+b;
     return 0;
 }
