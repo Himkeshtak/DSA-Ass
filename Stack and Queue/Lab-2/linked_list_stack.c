@@ -3,12 +3,12 @@
 
 struct node {
     int data;
-    struct node *prev;
+    struct node *prev, *next;
 };
 
 struct node *head = NULL;
 
-int node_create(int data)
+/*int node_create(int data)
 {   
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
 
@@ -21,11 +21,11 @@ int node_create(int data)
     new_node->prev = head;
     head = new_node;
     return 0;
-}
+}*/
 
 int push(int data)
 {   
-     struct node* new_node = (struct node*)malloc(sizeof(struct node));
+    struct node* new_node = (struct node*)malloc(sizeof(struct node));
 
     if(!new_node)
     {
@@ -37,6 +37,21 @@ int push(int data)
     head = new_node;
     return 0;
     //node_create(data);
+}
+
+int push(int data)
+{
+    struct node* new_node = (struct node*)malloc(sizeof(struct node));
+
+    if(!new_node)
+    {
+        printf("Memory allocation failed\n");
+        return -1;
+    }
+    head=new_node;
+    new_node->data = data;
+    new_node->next = NULL;
+    return 0;
 }
 
 void pop()
