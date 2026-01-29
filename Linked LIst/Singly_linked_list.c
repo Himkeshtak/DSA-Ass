@@ -7,7 +7,6 @@ struct node{
 };
 
 struct node* head=NULL;
-struct node* ptr=NULL;
 
 struct node* create_node(int data)
 {
@@ -28,7 +27,6 @@ void insert_end(int data)
     if(head==NULL)
     {
         head = new_node;
-        ptr = new_node;
         return;
     }
 
@@ -58,7 +56,7 @@ void insert_begin(int data)
 // after we get thhis data node after = data of node (after which new node will be inserted) 
 void insert_after(int data, int after)
 {
-    struct node * new_node = create_node;
+    struct node * new_node = create_node(data);
     if(head == NULL)
     {
         head = new_node;
@@ -74,30 +72,26 @@ void insert_after(int data, int after)
     new_node->next = ahead;
 }
 
-void insert_before(int data, int after)
+void insert_before(int data, int before)
 {
-    struct node * new_node = create_node;
+    struct node * new_node = create_node(data);
+    int after;
     if(head == NULL)
     {
-        head = new_node;
+        printf("the linked list is empty");
         return;
     }
     struct node * temp = head;
-    while(temp->value!=after)   
+    struct node * temp2 = NULL;
+    while(temp->value!=before)   
     {
+        temp2 = temp; // due to thsi clever step temp2 stpores data of one node back
         temp = temp->next;
+        if(temp->value == before)
+        {
+            after = temp2->value;
+        }     
     } 
-    struct node * ahead = temp->next;
-    temp->next = new_node;
-    new_node->next = ahead;
-}
-
-
-void insert_before(int data)
-{
-    struct node * new_node = create_node;
-    if
-
 }
 
 void display()
@@ -108,8 +102,20 @@ void display()
         printf("%d\n",temp->value);
         temp = temp->next;
     }
-
 }
+
+int count()
+{   
+    int count=0;
+    struct node * temp = head;
+    while (temp!=NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
 
 int main()
 {
@@ -124,7 +130,6 @@ int main()
     display();
     return 0;
 }
-
 
 // Biggest lessons form this are for linked which becomes the mool mantra
 //1. make modular function for each and every small task, every!!!
