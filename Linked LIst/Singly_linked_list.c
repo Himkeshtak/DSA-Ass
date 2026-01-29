@@ -50,8 +50,6 @@ void insert_begin(int data)
     head = new_node;
     new_node->next = temp;
 }
-
-
 // int 'after' is the variable made which shows that we ahve to place our new node after 
 // after we get thhis data node after = data of node (after which new node will be inserted) 
 void insert_after(int data, int after)
@@ -92,6 +90,7 @@ void insert_before(int data, int before)
             after = temp2->value;
         }     
     } 
+    insert_after(data,after);
 }
 
 void display()
@@ -116,6 +115,71 @@ int count()
     return count;
 }
 
+void delete_begin()
+{
+    if(head==NULL)
+    {
+        printf("The linked list is empty\n");
+        return;
+    }
+    struct node * temp = head;
+    head = temp->next;
+    free(temp);
+}
+
+void delete_end()
+{
+    if(head==NULL)
+    {
+        printf("The linked list is empty\n");
+        return;
+    }
+    struct node * temp = head;
+    if(temp->next==NULL)
+    {
+        head = NULL;
+    } 
+
+    while(temp->next->next!=NULL)
+    {   
+        temp = temp->next;
+        
+    }
+    free(temp->next); // free the memory space oocupied by the node , not deleting the pointer.
+    temp->next = NULL;
+}
+
+// taking the case when we are asked to delete the element between the two elements
+// and in this i am taking the case of after the element.
+void delete_btw(int after)
+{
+    if(head==NULL)
+    {
+        printf("The list is empty\n");
+        return;
+    }
+    struct node * temp = head;
+    struct node * temp1 = NULL;
+    while(temp->value==after)
+    {
+        temp = temp->next;
+    }
+
+    temp1 = temp->next->next; //assigning the temp2 pointer the addres of next to next pointer 
+    free(temp->next); //deleting the next node after the node given in the question, 
+    
+
+}
+
+int search(int data_search)
+{
+    struct node * temp = head;
+    while(temp->value != data_search)
+    {
+        temp = temp->next;
+    }
+    return temp; //returns the node in which the data is found so recieve the data in the same data structure only
+}
 
 int main()
 {
@@ -138,3 +202,6 @@ int main()
 //3. when you store a node in some temp variable then you can use temp->next to 
 //   to move the next of the new_node. variable ke use se hi next ya data daalna 
 //   wagerah is possible
+//4. The only key to our linked list in the whole memory space is HEAD pointer 
+//   otherwise all other variablesare local variables
+
