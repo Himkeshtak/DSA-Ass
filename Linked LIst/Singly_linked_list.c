@@ -167,9 +167,8 @@ void delete_btw(int after)
 
     temp1 = temp->next->next; //assigning the temp2 pointer the addres of next to next pointer 
     free(temp->next); //deleting the next node after the node given in the question, 
-    
-
-}
+    temp->next = temp1; // linking the next of the current node to the next to next node
+}   
 
 int search(int data_search)
 {
