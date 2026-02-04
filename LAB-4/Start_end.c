@@ -2,7 +2,7 @@
 
 int permut_gen(int n , int startused , int endused ,int pos, char seq[])
 {   
-    int N = 2*n;
+    //int N = 2*n;
     //static int pos = 0;
   
     // condition for the recursion
@@ -15,13 +15,13 @@ int permut_gen(int n , int startused , int endused ,int pos, char seq[])
     {
         seq[pos] = 'S';
         permut_gen(n, startused+1,endused,pos+1, seq);
-        pos++;
+        //pos++;
     }
     if(endused<startused)
     {
         seq[pos] = 'E';
         permut_gen(n, startused, endused+1,pos+1, seq);
-        pos++;
+        //pos++;
     }
     return 0;
 }
