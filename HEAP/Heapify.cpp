@@ -13,10 +13,11 @@ class maxheap{
         int size;
         int capacity;
     public:
-
+        // the value of the root is greater that the value of the children
+        // while heapifying an element , we are jsut caring about this property only
         heapify(int i)
         {
-            int i = largest;
+            int largest = i;
             int left = 2*i + 1;
             int right  = 2*i + 2;
 
@@ -32,7 +33,7 @@ class maxheap{
             if(largest != i)
             {
                 swap(array[i] , array[largest]);
-                heapify(largest)
+                heapify(largest);
             }
         }
 
@@ -40,7 +41,7 @@ class maxheap{
 
         my_heapify(int i)
         {
-            int i = largest;
+            int largest = i;
             int left = 2*i + 1;
             int right  = 2*i + 2;
 
@@ -139,11 +140,63 @@ class maxheap{
             heapify(0);
             return root;
         }
+
+        void delete_func(int key)
+        {
+            int index = -1;
+
+            //searching for the key of the element
+            for(int i = 0; i<size; i++)
+            {
+                if(array[i]==key)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            //If the index is -1 , means that the key is not found the element does not exist in the heap
+            if(index == -1)
+            {
+                cout<<"Element does not exist in the heap";
+                return;
+            }
+
+            // if the index of key tells that the element to be deleted is the last 
+            // element in the heap, then we can simply remove it without heapifying the heap again
+            //like we did in the pop function.
+            if(index == size-1)
+            {
+                size--;
+                return array[index];
+            }
+
+            // insert the value of the last element in the heap 
+            // to the index of the element to be deleted and 
+            // then call heapify to retain the properties of the heap
+            array[index] = array[size-1];
+            size--;
+            heapify(index);
+
+        }
+
+        //print the heap
+        void print_heap()
+        {
+            cout<<"Max Heap : \n";
+            for(int i = 0; i<size; i++)
+            {
+                cout<<array[i]<<"\n";
+            }
+        }
 };
 
 int main()
 {
     vector<int> arr = {3, 2, 1, 4 ,5 ,6, 7, 8, 9, 10};
 
+    maxheap<int> heap;
+    heap.buildheap(arr);
+    heap.print_heap();
     return 0;
 }
