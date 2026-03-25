@@ -39,26 +39,27 @@ class maxheap{
 
         //  my alternate implementation of heapify, simple to understand
 
-        my_heapify(int i)
-        {
-            int largest = i;
-            int left = 2*i + 1;
-            int right  = 2*i + 2;
+        //my_heapify(int i)
+        //{
+        //    int largest = i;
+        //    int left = 2*i + 1;
+        //    int right  = 2*i + 2;
+//
+        //    if(left < size && array[left] > array[largest] )
+        //    {   
+        //        
+        //        swap(array[i] , array[left]);
+        //        my_heapify(largest);
+        //    }
+        //    if(right < size && array[right] > array[largest])
+        //    {
+        //        swap(array[i] , array[right]);
+        //        my_heapify(largest);
+        //    }
+        //}
 
-            if(left < size && array[left] > array[largest] )
-            {
-                swap(array[i] , array[left]);
-                heapify(largest);
-            }
-            if(right < size && array[right] > array[largest])
-            {
-                swap(array[i] , array[right]);
-                heapify(largest);
-            }
-        }
-
-        //funcition to build a heap from an array
-        void buildheap( const vector<T>& arr)
+        //function to build a heap from an array
+        void buildheap( const vector<T>  &arr)
         {   
             capacity = arr.size();
             size = capacity;
@@ -84,7 +85,7 @@ class maxheap{
 
             int i = size - 1;
             array[i] = key;
-
+            
             while(i != 0 && array[(i-1)/2] < array[i])
             {
                 swap(array[i], array[(i-1)/2]);
