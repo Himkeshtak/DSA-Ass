@@ -6,6 +6,9 @@ using namespace std;
 class Solution{
     public:
         // Function to return bReadth  First Traversal of given graph
+        //BFS is nothing bu thte level order traversal iof the Tree 
+        //as we did before in the Heap 
+        
         vector<int> bfs(int V, vector<int> adj[])
         {
             int vis[V] = {0};
