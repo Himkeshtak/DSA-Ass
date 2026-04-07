@@ -42,3 +42,50 @@ class Solution
     }
 };
 
+// this is the equivalent loop as of the auto it wala loop
+//for(int i = 0; i < adj[node].size(); i++)
+//{
+//    vector<int> it = adj[node][i];
+//}
+
+int main()
+{
+    int V = 5;
+
+    // MUST match: vector<vector<int>> adj[]
+    vector<vector<int>> adj[V];
+
+    // {adjNode, weight}
+    adj[0].push_back({1, 2});
+    adj[1].push_back({0, 2});
+
+    adj[0].push_back({3, 6});
+    adj[3].push_back({0, 6});
+
+    adj[1].push_back({2, 3});
+    adj[2].push_back({1, 3});
+
+    adj[1].push_back({3, 8});
+    adj[3].push_back({1, 8});
+
+    adj[1].push_back({4, 5});
+    adj[4].push_back({1, 5});
+
+    adj[2].push_back({4, 7});
+    adj[4].push_back({2, 7});
+
+    // Create object of class
+    Solution obj;
+
+    // Call function (VERY IMPORTANT: pass V, adj, source)
+    vector<int> result = obj.dijkstra(V, adj, 0);
+
+    // Print result
+    cout << "Shortest distances from source:\n";
+    for (int i = 0; i < V; i++)
+    {
+        cout << i << " -> " << result[i] << endl;
+    }
+
+    return 0;
+}
