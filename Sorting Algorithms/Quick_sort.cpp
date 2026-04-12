@@ -4,7 +4,7 @@ using namespace std;
 
 int partition(int arr[], int high, int low)
 {
-    int pivot = arr[high] ; //making th3e lasting element as a pivot
+    int pivot = arr[high] ; //making the lasting element as a pivot
     int i = low - 1;
 
     for(int j=low; j < high; j++)
