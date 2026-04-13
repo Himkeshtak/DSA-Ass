@@ -1,21 +1,21 @@
 #include <iostream>
 #include <vector>
-#include<queue>
+#include <queue>
 using namespace std;
 
-class Solution{
+class BFS
+{
     public:
-        // Function to return bReadth  First Traversal of given graph
-        //BFS is nothing bu thte level order traversal iof the Tree 
-        //as we did before in the Heap 
-        
+    
         vector<int> bfs(int V, vector<int> adj[])
         {
             int vis[V] = {0};
-            vis[0] = 1;
-            queue<int> q;
-            q.push(0);
             vector<int> bfs;
+            queue<int> q;
+
+            vis[0] = 1;
+            q.push(0);
+
             while(!q.empty())
             {
                 int node = q.front();
@@ -33,4 +33,5 @@ class Solution{
             }
             return bfs;
         }
+    
 };
