@@ -62,7 +62,7 @@ void primMST(int graph[V][V])
         mstSet[u] = true;              // include in MST, MST mein daal do
 
         // Step -3 : Update adjacent vertices abhi jo minkey mila use saare neighbours
-        // update karo ki kon hais uske aas paas 
+        // update karo ki kon hai uske aas paas 
         for( int v = 0; v < V; v++)
         {
             if(graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])

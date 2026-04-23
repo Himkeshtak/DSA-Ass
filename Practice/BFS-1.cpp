@@ -35,3 +35,8 @@ class BFS
         }
     
 };
+
+int main()
+{
+    return 0;
+}
